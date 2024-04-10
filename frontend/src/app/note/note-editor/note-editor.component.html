@@ -13,6 +13,6 @@
     </form>
     <div class="tags-container">
         <app-tag-preview *ngFor="let tag of note.tags" [tag]="tag" (deleteTagEvent)="deleteTag($event)"></app-tag-preview>
-        <ng-select [items]="tagsOptions" placeholder="Add tag" bindLabel="name" bindValue="id" [(ngModel)]="selectedTag" [searchable]="true" (change)="addTag($event)" [disabled]="!noteForm.valid" style="width: 150px;"></ng-select>
+        <ng-select [items]="tagsOptions" placeholder="Add tag" bindLabel="name" bindValue="id" [(ngModel)]="selectedTag" [searchable]="true" (change)="addTag($event)" [disabled]="!noteForm.valid" class="tag-select"></ng-select>
     </div>
 </div>

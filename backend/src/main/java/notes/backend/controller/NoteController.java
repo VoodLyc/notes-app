@@ -1,5 +1,6 @@
 package notes.backend.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import notes.backend.model.Note;
 import notes.backend.service.NoteService;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/notes")
+@Tag(name = "Note")
 public class NoteController {
 
     @Autowired
