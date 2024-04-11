@@ -1,0 +1,8 @@
+<div *ngIf="control.errors && (control.dirty || control.touched)" >
+    <div *ngFor="let error of control.errors | keyvalue" class="error-container">
+        <div *ngIf="control.errors[error.key]" class="error">
+            <i class='bx bxs-error error-msg error-icon'></i> 
+            <span class="error-msg">{{getErrorMessage(error.key)}}</span>
+        </div>
+    </div>
+</div>

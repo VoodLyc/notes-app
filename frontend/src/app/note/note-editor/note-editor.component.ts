@@ -8,11 +8,12 @@ import { TagPreviewComponent } from '../../tag/tag-preview/tag-preview.component
 import { Tag } from '../../shared/model/tag.model';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TagService } from '../../shared/service/tag.service';
+import { PrintValidationErrorComponent } from '../../shared/components/print-validation-error/print-validation-error.component';
 
 @Component({
   selector: 'app-note-editor',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, TagPreviewComponent, NgSelectModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, TagPreviewComponent, NgSelectModule, PrintValidationErrorComponent],
   templateUrl: './note-editor.component.html',
   styleUrl: './note-editor.component.css'
 })

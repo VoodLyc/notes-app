@@ -1,11 +1,16 @@
 <div class="container">
-    <form [formGroup]="tagForm" (ngSubmit)="onSubmit()">
-        <input id="name" formControlName="name" placeholder="Enter your tag">
-        <button type="submit" *ngIf="tagForm.dirty">
-            <i class='bx bxs-save'></i>
-        </button>
-        <button (click)="deleteTag()">
-            <i class='bx bxs-trash'></i>
-        </button>
-    </form>
+    <div class="tag-container">
+        <form [formGroup]="tagForm" (ngSubmit)="onSubmit()">
+            <input id="name" formControlName="name" placeholder="Enter your tag">
+            <button type="submit" *ngIf="tagForm.dirty">
+                <i class='bx bxs-save'></i>
+            </button>
+            <button (click)="deleteTag()">
+                <i class='bx bxs-trash'></i>
+            </button>
+        </form>
+    </div>
+    <div>
+        <app-print-validation-error [control]="tagForm.get('name')!" class="error-msg"></app-print-validation-error>
+    </div>
 </div>

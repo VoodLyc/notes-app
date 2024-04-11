@@ -9,6 +9,7 @@
             <button (click)="deleteNote()" [disabled]="note.id == -1"><i class='bx bxs-trash'></i> Delete</button>
         </div>
         <input type="text" id="title" placeholder="Title" formControlName="title" class="form__title-input">
+        <app-print-validation-error [control]="noteForm.get('title')!" ></app-print-validation-error>
         <textarea id="content" placeholder="Write your note" formControlName="content" class="form__content-input"></textarea>
     </form>
     <div class="tags-container">
