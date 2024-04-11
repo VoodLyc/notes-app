@@ -9,6 +9,7 @@ import { Tag } from '../../shared/model/tag.model';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TagService } from '../../shared/service/tag.service';
 import { PrintValidationErrorComponent } from '../../shared/components/print-validation-error/print-validation-error.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-note-editor',
@@ -25,7 +26,7 @@ export class NoteEditorComponent implements OnInit, OnDestroy {
   tagsOptions: Tag[] = [{ id: -1, name: "" }];
   selectedTag: Tag = { id: -1, name: "" };
 
-  constructor(private noteService: NoteService, private tagService: TagService) { }
+  constructor(private noteService: NoteService, private tagService: TagService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.noteService.getSelectedNote().pipe(
@@ -53,14 +54,18 @@ export class NoteEditorComponent implements OnInit, OnDestroy {
   saveNote(): void {
     this.note.title = this.noteForm.value["title"];
     this.note.content = this.noteForm.value["content"];
-    this.noteService.saveNote(this.note).subscribe(
-      (note: Note) => {
+    this.noteService.saveNote(this.note).subscribe({
+      next: (note: Note) => {
         if (this.note.id == -1) {
           this.noteService.setSelectedNote(note);
         }
+        this.toastr.success("The note was saved successfully", "Note Saved", { timeOut: 2000, positionClass: "toast-bottom-right"});
         this.noteService.fetchNotes();
+      },
+      error: (error: Error) => {
+        this.toastr.error(error.message, "Error", { timeOut: 2000, positionClass: "toast-bottom-right" });
       }
-    );
+    });
   }
 
   toggleActive(): void {
@@ -69,11 +74,15 @@ export class NoteEditorComponent implements OnInit, OnDestroy {
   }
 
   deleteNote(): void {
-    this.noteService.deleteNote(this.note.id).subscribe(
-      () => {
+    this.noteService.deleteNote(this.note.id).subscribe({
+      next: () => {
         this.noteService.fetchNotes();
+        this.toastr.success("The note was deleted successfully", "Note Deleted", { timeOut: 2000, positionClass: "toast-bottom-right" });
+      },
+      error: (error: Error) => {
+        this.toastr.error(error.message, "Error", { timeOut: 2000, positionClass: "toast-bottom-right" });
       }
-    );
+    });
     this.noteService.setSelectedNote({ id: -1, title: "", content: "", active: true, tags: [] });
   }
 

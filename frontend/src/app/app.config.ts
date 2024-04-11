@@ -3,7 +3,12 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), importProvidersFrom(HttpClientModule)]
+  providers: [provideRouter(routes), importProvidersFrom(HttpClientModule), provideToastr({
+    preventDuplicates: true,
+    maxOpened: 3,
+    autoDismiss: true
+  })]
 };

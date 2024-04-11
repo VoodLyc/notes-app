@@ -27,7 +27,8 @@
             "styles": [
               "src/styles.css",
               "src/ng-multiselect-dropdown.theme.scss",
-              "node_modules/@ng-select/ng-select/themes/default.theme.css"
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },

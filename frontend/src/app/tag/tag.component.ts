@@ -4,6 +4,7 @@ import { Tag } from '../shared/model/tag.model';
 import { TagService } from '../shared/service/tag.service';
 import { Subject, takeUntil } from 'rxjs';
 import { TagCardComponent } from './tag-card/tag-card.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tag',
@@ -17,7 +18,7 @@ export class TagComponent implements OnInit, OnDestroy {
   ngUnsubscribe: Subject<void> = new Subject();
 
 
-  constructor(private tagService: TagService) {}
+  constructor(private tagService: TagService, private toastr: ToastrService) {}
   
   ngOnInit(): void {
     this.tagService.fetchTags();
