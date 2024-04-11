@@ -1,5 +1,6 @@
 package notes.backend.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import notes.backend.model.AuthenticationResponse;
 import notes.backend.model.User;
 import notes.backend.service.AuthenticationService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Auth")
 public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
