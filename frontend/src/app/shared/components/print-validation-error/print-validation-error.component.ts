@@ -15,8 +15,9 @@ export class PrintValidationErrorComponent {
   getErrorMessage(errorKey: string): string {
     const errorMessages: { [key: string]: string } = {
       required: 'This field is required',
-      maxlength: `The maximum length for this field is 20`,
-      duplicatedName: `A tag with the name ${this.control.value?.toString()?.toLowerCase()} already exists, please choose a different name`
+      maxlength: `The maximum length for this field is ${this.control.errors![errorKey].requiredLength}, but actual length is ${this.control.errors![errorKey].actualLength}`,
+      minlength: `The minimum length for this field is ${this.control.errors![errorKey].requiredLength}, but actual length is ${this.control.errors![errorKey].actualLength}`,
+      email: 'A valid email is required'
     }
     return errorMessages[errorKey] || 'Invalid value'
   }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuItem } from './menu-item/menu-item.model';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -11,6 +12,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './side-menu.component.css'
 })
 export class SideMenuComponent {
-  menuItems: MenuItem[] = [{ label: "Notes", icon: "bx bxs-note", url: ["/notes"] }, { label: "Tags", icon: "bx bxs-purchase-tag", url: ["/tags"] }];
+  menuItems: MenuItem[] = [{ label: "Notes", icon: "bx bxs-note", url: ["notes"] }, { label: "Tags", icon: "bx bxs-purchase-tag", url: ["tags"] }];
+
+  constructor(private authService: AuthService) {}
+
+  logOut(): void {
+    this.authService.logOut();
+  }
 
 }
