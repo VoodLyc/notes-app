@@ -2,14 +2,14 @@
     display: flex;
     gap: 5px;
     flex-direction: column;
-    width: 200px;
+    width: 100%;
 }
 
 .tag-container {
     display: flex;
     align-items: center;
     height: 40px;
-    width: 200px;
+    width: 300px;
     border: 2px solid rgba(0, 0, 0, .07);
     border-radius: 5px;
 }
